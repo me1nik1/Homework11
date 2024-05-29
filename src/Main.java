@@ -15,6 +15,7 @@ public class Main {
         } else {
             System.out.println("Доставки нет");
         }
+
     }
 
     public static void checkLeapYear(int year) {
