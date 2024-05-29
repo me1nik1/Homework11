@@ -1,23 +1,24 @@
-import java.time.LocalDate;
-
 public class Main {
     public static void main(String[] args) {
-        chekLeapYear(2025);
-        chekLeapYear(2024);
-        chekLeapYear(2020);
+        checkLeapYear(2025);
+        checkLeapYear(2024);
+        checkLeapYear(2020);
+
         printVersion(1, 2021);
-        printVersion(0, 2024);
-        int days = calculationOfDelivery(20, 0);
+        printVersion(0, 2014);
+        printVersion(1, 2013);
+        printVersion(0, 2023);
+
+        int days = calculationOfDelivery(95);
         if (days > 0) {
-            System.out.println("Потребуется дней: " + days);
+            System.out.println("Потребуется дней:" + days);
         } else {
             System.out.println("Доставки нет");
         }
 
-
     }
 
-    public static void chekLeapYear(int year) {
+    public static void checkLeapYear(int year) {
         if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
             System.out.println(year + " год - високосный");
         } else {
@@ -29,7 +30,7 @@ public class Main {
         if (year < 0) {
             System.out.println("Год не может быть меньше 0");
         } else {
-            int currentYear = LocalDate.now().getYear();
+            int currentYear = 2015;
             String type;
             if (osType == 1) {
                 type = "Android";
@@ -38,25 +39,28 @@ public class Main {
             }
             String appType;
             if (year < currentYear) {
-                appType = "облегченную ";
+                appType = " облегченную ";
             } else {
                 appType = "";
             }
-            System.out.println("Установите " + appType + " версию для системы " + type);
+            System.out.println("Установите" + appType + " версию для системы " + type);
         }
     }
 
-    public static int calculationOfDelivery(int deliveryDistance, int days) {
+    public static int calculationOfDelivery(int deliveryDistance) {
         if (deliveryDistance > 100) {
-            return -1;
+            return -100;
         }
-        if (deliveryDistance < 20) {
+        int days = 1;
+        if (deliveryDistance > 20) {
             days++;
-        } else if (deliveryDistance > 20 && deliveryDistance <= 60) {
-            days++;
-        } else if (deliveryDistance > 60 && deliveryDistance < 100) {
+        }
+        if (deliveryDistance > 60) {
             days++;
         }
         return days;
     }
 }
+
+
+
